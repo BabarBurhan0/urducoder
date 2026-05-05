@@ -184,7 +184,7 @@ export default function PrivacyPolicyPage() {
       <h2>11. Contact Us</h2>
       <p>If you have any questions about this Privacy Policy, please contact us:</p>
       <ul>
-        <li>By email: hello@urducoder.com</li>
+        <li>By email: urducoder.blog@gmail.com</li>
         <li>
           By visiting our contact page:{" "}
           <a href="/contact">urducoder.com/contact</a>

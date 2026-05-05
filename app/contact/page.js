@@ -11,33 +11,9 @@ const contactMethods = [
     icon: "📧",
     title: "Email",
     description: "Kisi bhi sawaal ke liye email karein",
-    value: "hello@urducoder.com",
-    href: "mailto:hello@urducoder.com",
+    value: "urducoder.blog@gmail.com",
+    href: "mailto:urducoder.blog@gmail.com",
     color: "from-blue-500 to-cyan-500",
-  },
-  {
-    icon: "🐦",
-    title: "Twitter/X",
-    description: "DM bhejein ya tweet karein",
-    value: "@urducoder",
-    href: "https://twitter.com/urducoder",
-    color: "from-sky-500 to-blue-500",
-  },
-  {
-    icon: "💼",
-    title: "LinkedIn",
-    description: "Professional connections ke liye",
-    value: "UrduCoder",
-    href: "https://linkedin.com/in/urducoder",
-    color: "from-blue-700 to-indigo-700",
-  },
-  {
-    icon: "💬",
-    title: "WhatsApp",
-    description: "Quick query ke liye",
-    value: "Coming Soon",
-    href: "#",
-    color: "from-green-500 to-emerald-500",
   },
 ];
 
@@ -61,8 +37,8 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Methods Grid */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-6">
           {contactMethods.map((method) => (
             <a
               key={method.title}

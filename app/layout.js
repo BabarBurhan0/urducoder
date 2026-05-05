@@ -57,7 +57,7 @@ export const metadata = {
     card: "summary_large_image",
     title: `${siteConfig.name} — Roman Urdu Coding & AI Tutorials`,
     description: siteConfig.description,
-    creator: siteConfig.author.twitter,
+    ...(siteConfig.author.twitter && { creator: siteConfig.author.twitter }),
   },
   robots: {
     index: true,
@@ -75,6 +75,8 @@ export const metadata = {
   },
 };
 
+const socialUrls = Object.values(siteConfig.social).filter(Boolean);
+
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -82,13 +84,7 @@ const organizationJsonLd = {
   url: siteConfig.url,
   logo: `${siteConfig.url}/opengraph-image`,
   description: siteConfig.description,
-  sameAs: [
-    siteConfig.social.twitter,
-    siteConfig.social.youtube,
-    siteConfig.social.github,
-    siteConfig.social.facebook,
-    siteConfig.social.linkedin,
-  ],
+  ...(socialUrls.length > 0 && { sameAs: socialUrls }),
 };
 
 const websiteJsonLd = {

@@ -48,7 +48,7 @@ export async function generateMetadata({ params }) {
       card: "summary_large_image",
       title,
       description,
-      creator: siteConfig.author.twitter,
+      ...(siteConfig.author.twitter && { creator: siteConfig.author.twitter }),
     },
   };
 }

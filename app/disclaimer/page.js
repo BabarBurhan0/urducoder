@@ -115,7 +115,7 @@ export default function DisclaimerPage() {
       <p>
         Should you have any feedback, comments, requests for technical support, or other
         inquiries, please contact us at{" "}
-        <a href="mailto:hello@urducoder.com">hello@urducoder.com</a> or through our{" "}
+        <a href="mailto:urducoder.blog@gmail.com">urducoder.blog@gmail.com</a> or through our{" "}
         <a href="/contact">contact page</a>.
       </p>
     </LegalLayout>

@@ -24,7 +24,7 @@ export default function ContactForm() {
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     );
-    const mailtoUrl = `mailto:hello@urducoder.com?subject=${subject}&body=${body}`;
+    const mailtoUrl = `mailto:urducoder.blog@gmail.com?subject=${subject}&body=${body}`;
 
     window.location.href = mailtoUrl;
 

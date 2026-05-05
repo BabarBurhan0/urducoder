@@ -107,7 +107,7 @@ export default function TermsPage() {
       <h2>11. Contact Us</h2>
       <p>If you have any questions about these Terms, please contact us:</p>
       <ul>
-        <li>By email: hello@urducoder.com</li>
+        <li>By email: urducoder.blog@gmail.com</li>
         <li>
           By visiting our contact page: <a href="/contact">urducoder.com/contact</a>
         </li>

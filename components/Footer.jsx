@@ -20,12 +20,7 @@ const footerLinks = {
   ],
 };
 
-const socialLinks = [
-  { href: "https://twitter.com/urducoder", label: "Twitter", icon: "twitter" },
-  { href: "https://youtube.com/@urducoder", label: "YouTube", icon: "youtube" },
-  { href: "https://github.com/urducoder", label: "GitHub", icon: "github" },
-  { href: "https://facebook.com/urducoder", label: "Facebook", icon: "facebook" },
-];
+const socialLinks = [];
 
 function SocialIcon({ icon }) {
   const icons = {
@@ -61,20 +56,22 @@ export default function Footer() {
             <p className="mt-3 text-sm text-gray-600 dark:text-gray-400">
               Pakistan ka #1 Roman Urdu coding blog. AI, Web Development, aur Tech tutorials asaan zubaan mein.
             </p>
-            <div className="mt-4 flex gap-3">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                  className="text-gray-500 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors"
-                >
-                  <SocialIcon icon={social.icon} />
-                </a>
-              ))}
-            </div>
+            {socialLinks.length > 0 && (
+              <div className="mt-4 flex gap-3">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="text-gray-500 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors"
+                  >
+                    <SocialIcon icon={social.icon} />
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Link Columns */}
