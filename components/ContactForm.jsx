@@ -40,8 +40,8 @@ export default function ContactForm() {
         name: formData.name,
         email: formData.email,
         message: formData.message,
-        // Honeypot field — bots will fill this, real users won't
-        botcheck: e.target.botcheck?.value || "",
+        // Honeypot — must be empty for real users; bots auto-fill hidden fields
+        botcheck: e.target.botcheck?.checked ? "on" : "",
       };
 
       const res = await fetch(WEB3FORMS_ENDPOINT, {
