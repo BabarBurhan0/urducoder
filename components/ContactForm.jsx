@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
@@ -10,28 +12,60 @@ export default function ContactForm() {
     message: "",
   });
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!accessKey) {
+      setStatus("error");
+      setErrorMsg("Form abhi configure nahi hai. Aap urducoder.blog@gmail.com pe direct email kar sakte hain.");
+      return;
+    }
+
     setStatus("sending");
+    setErrorMsg("");
 
-    // Open default email client with pre-filled data
-    const subject = encodeURIComponent(formData.subject || "UrduCoder Contact");
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    );
-    const mailtoUrl = `mailto:urducoder.blog@gmail.com?subject=${subject}&body=${body}`;
+    try {
+      const payload = {
+        access_key: accessKey,
+        from_name: "UrduCoder Contact Form",
+        subject: `[UrduCoder] ${formData.subject}`,
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        // Honeypot field — bots will fill this, real users won't
+        botcheck: e.target.botcheck?.value || "",
+      };
 
-    window.location.href = mailtoUrl;
+      const res = await fetch(WEB3FORMS_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
-    setTimeout(() => {
-      setStatus("sent");
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 500);
+      const result = await res.json();
+
+      if (result.success) {
+        setStatus("sent");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setStatus("error");
+        setErrorMsg(result.message || "Kuch error aa gaya. Dobara try karein.");
+      }
+    } catch (err) {
+      setStatus("error");
+      setErrorMsg("Network error. Apna internet check karein aur dobara try karein.");
+    }
   };
 
   return (
@@ -41,9 +75,25 @@ export default function ContactForm() {
     >
       {status === "sent" && (
         <div className="mb-6 rounded-lg border border-green-200 bg-green-50 p-4 text-sm text-green-800 dark:border-green-900 dark:bg-green-950/50 dark:text-green-300">
-          ✓ Aapka email client khul gaya hai — message bhej dein. Hum jawab denge!
+          ✓ Aapka message bhej diya gaya hai! Hum 24-48 ghante mein jawab denge. 🎉
         </div>
       )}
+
+      {status === "error" && (
+        <div className="mb-6 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800 dark:border-red-900 dark:bg-red-950/50 dark:text-red-300">
+          ✗ {errorMsg}
+        </div>
+      )}
+
+      {/* Honeypot field — hidden from real users, bots fill it */}
+      <input
+        type="checkbox"
+        name="botcheck"
+        tabIndex="-1"
+        autoComplete="off"
+        style={{ display: "none" }}
+        aria-hidden="true"
+      />
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
@@ -147,7 +197,7 @@ export default function ContactForm() {
       </button>
 
       <p className="mt-4 text-center text-xs text-gray-500 dark:text-gray-400">
-        Form submit karne se aapka default email client khulega.
+        🔒 Aapki information secure hai aur kabhi share nahi hogi.
       </p>
     </form>
   );
