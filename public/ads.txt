@@ -1,0 +1,5 @@
+# UrduCoder ads.txt
+# After AdSense approval, replace pub-XXXXXXXXXXXXXXXX with your actual publisher ID
+# Then uncomment the line below.
+
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

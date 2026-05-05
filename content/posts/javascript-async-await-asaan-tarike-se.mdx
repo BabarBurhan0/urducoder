@@ -1,0 +1,77 @@
+---
+title: "JavaScript Async/Await Asaan Tarike Se Samjho"
+description: "JavaScript ka async/await pattern bilkul beginner-friendly tareeke se samjho. Promises, callbacks, aur error handling ke saath."
+date: "2026-04-18"
+author: "UrduCoder"
+category: "JavaScript"
+tags: ["javascript", "async", "promises", "tutorial", "beginner"]
+featured: false
+cover: null
+---
+
+# JavaScript Async/Await — Asaan Tarike Se
+
+Agar aap JavaScript seekh rahe ho, to **async/await** wo cheez hai jo har developer ko aani chahiye. Aaj hum is ko bilkul **beginner-friendly tareeke** se samjhenge.
+
+## Pehle Synchronous vs Asynchronous Samjho
+
+**Synchronous code**: Ek line khatam hone ke baad doosri chalti hai (jaise queue mein khade log).
+
+**Asynchronous code**: Ek kaam shuru karke, jawab ka wait kiye baghair, doosre kaam pe chale jao (jaise tea order karke phone check karna).
+
+## Promise Kya Hota Hai?
+
+Promise ek **vada** hai — ya to wo "fulfilled" hoga (kaam hogaya) ya "rejected" hoga (kaam fail).
+
+```javascript
+const myPromise = fetch("https://api.example.com/data");
+```
+
+## Async/Await Ka Jadu
+
+`async/await` Promise ko **synchronous jaisa** likhne deta hai. Pehle dekho purana tareeqa:
+
+```javascript
+fetch("/api/users")
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.error(err));
+```
+
+Ab `async/await` ke saath:
+
+```javascript
+async function getUsers() {
+  try {
+    const res = await fetch("/api/users");
+    const data = await res.json();
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+}
+```
+
+Kitna **clean** aur **readable** hai!
+
+## Important Rules
+
+1. `await` sirf `async` function ke andar use kar sakte ho
+2. `try/catch` ka istemal **must** hai error handling ke liye
+3. `await` line ke baad ka code wait karega
+
+## Real Example
+
+```javascript
+async function loadUserProfile(userId) {
+  const user = await fetch(`/api/users/${userId}`);
+  const posts = await fetch(`/api/posts?user=${userId}`);
+  return { user, posts };
+}
+```
+
+## Conclusion
+
+`async/await` JavaScript mein asynchronous code likhne ka **modern aur clean tareeqa** hai. Practice karte raho — jaldi master ho jayega!
+
+Agle post mein hum **Promise.all()** aur parallel requests sikhenge. 🚀
