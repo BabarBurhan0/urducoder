@@ -4,7 +4,8 @@ import { useEffect } from "react";
 import { adsConfig, isAdsterraReady } from "@/lib/ads";
 
 export default function AdsterraPopunder() {
-  const ready = isAdsterraReady() && Boolean(adsConfig.adsterra.popunderKey);
+  const url = adsConfig.adsterra.popunderUrl;
+  const ready = isAdsterraReady() && Boolean(url);
 
   useEffect(() => {
     if (!ready) return;
@@ -13,10 +14,10 @@ export default function AdsterraPopunder() {
     const script = document.createElement("script");
     script.id = "adsterra-popunder";
     script.type = "text/javascript";
-    script.src = `//pl${adsConfig.adsterra.popunderKey}.profitableratecpm.com/${adsConfig.adsterra.popunderKey}/invoke.js`;
+    script.src = url;
     script.async = true;
     document.body.appendChild(script);
-  }, [ready]);
+  }, [ready, url]);
 
   return null;
 }

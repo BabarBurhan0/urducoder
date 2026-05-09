@@ -7,7 +7,8 @@ import AdPlaceholder from "./AdPlaceholder";
 export default function AdsterraNative({ label = "Adsterra Native Banner" }) {
   const containerRef = useRef(null);
   const initialized = useRef(false);
-  const ready = isAdsterraReady() && Boolean(adsConfig.adsterra.nativeKey);
+  const { nativeUrl, nativeContainerId } = adsConfig.adsterra;
+  const ready = isAdsterraReady() && Boolean(nativeUrl) && Boolean(nativeContainerId);
 
   useEffect(() => {
     if (!ready || initialized.current || !containerRef.current) return;
@@ -15,15 +16,15 @@ export default function AdsterraNative({ label = "Adsterra Native Banner" }) {
     const script = document.createElement("script");
     script.async = true;
     script.dataset.cfasync = "false";
-    script.src = `//pl${adsConfig.adsterra.nativeKey}.profitableratecpm.com/${adsConfig.adsterra.nativeKey}/invoke.js`;
+    script.src = nativeUrl;
 
     const target = document.createElement("div");
-    target.id = `container-${adsConfig.adsterra.nativeKey}`;
+    target.id = `container-${nativeContainerId}`;
 
     containerRef.current.appendChild(script);
     containerRef.current.appendChild(target);
     initialized.current = true;
-  }, [ready]);
+  }, [ready, nativeUrl, nativeContainerId]);
 
   if (!ready) {
     if (shouldShowPlaceholders()) {
