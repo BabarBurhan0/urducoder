@@ -2,9 +2,9 @@ import Link from "next/link";
 import { getAllPosts, getAllCategories } from "@/lib/posts";
 
 export const metadata = {
-  title: "About — Hamare Baare Mein",
+  title: "About - Hamare Baare Mein",
   description:
-    "UrduCoder ki kahani jaano — kyun shuru kiya, kya hamara mission hai, aur Pakistani developer community ke liye kya plan hai.",
+    "UrduCoder ki kahani jaano - kyun shuru kiya, kya hamara mission hai, aur Pakistani developer community ke liye kya plan hai.",
 };
 
 export default function AboutPage() {
@@ -34,7 +34,7 @@ export default function AboutPage() {
             Mein Sikhana
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600 dark:text-gray-400">
-            UrduCoder ek mission hai — Pakistan ke harek student aur developer ko quality
+            UrduCoder ek mission hai - Pakistan ke harek student aur developer ko quality
             tech education provide karna, wo bhi unki apni zubaan mein.
           </p>
         </div>
