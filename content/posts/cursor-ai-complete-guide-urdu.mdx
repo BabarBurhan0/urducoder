@@ -1,0 +1,369 @@
+---
+title: "Cursor AI Use Karna — Complete Guide for Pakistani Developers"
+description: "Cursor AI ka complete guide Roman Urdu mein. Installation, features, shortcuts aur free tier ka maximum istemal — sab kuch ek post mein."
+date: "2026-05-11"
+author: "UrduCoder"
+category: "AI Tools"
+tags: ["cursor", "ai", "vscode", "coding", "productivity", "tools"]
+featured: true
+cover: null
+---
+
+# Cursor AI Use Karna — Complete Guide
+
+Agar tum **2026 mein code likh rahe ho** aur abhi tak **Cursor AI** use nahi kar rahe — tum apne aap ke saath bohat bara dhoka kar rahe ho.
+
+Main seriously bol raha hun. Cursor literally **coding ki speed 3-5x** kar deta hai. Aur best part? **Free tier itna powerful hai** ke 80% kaam usi mein ho jata hai.
+
+Is post mein hum cover karenge:
+
+- Cursor AI kya hai aur kyun important hai
+- VS Code aur GitHub Copilot se kaise different hai
+- Installation step by step
+- 5 game-changing features (with examples)
+- Free vs Pro — kya chahiye?
+- Pakistani developers ke liye special tips
+- Keyboard shortcuts cheat sheet
+
+Chalo shuru karte hain.
+
+## Cursor AI Kya Hai?
+
+**Cursor** ek AI-powered code editor hai jo VS Code ka **fork** hai. Matlab dekhne mein VS Code jaisa hi hai, sab extensions kaam karte hain, lekin andar **GPT-4, Claude, aur Cursor ka apna AI model** built-in hai.
+
+Simple words mein: **VS Code + ChatGPT + GitHub Copilot ek hi tool mein, lekin 10x behtar**.
+
+### Real Example:
+
+Imagine karo tum React component bana rahe ho. Normally tum karte ho:
+
+1. Component file create karo
+2. Imports likho
+3. State setup karo
+4. JSX likho
+5. Styling karo
+
+**Cursor mein**: Tum `Cmd+K` press karke likho — "Create a user profile card component with name, email, and avatar" — aur **complete component ready ho jata hai**. Bas review karke accept kar do.
+
+## Cursor vs GitHub Copilot vs ChatGPT — Konsa Behtar?
+
+Ye sabse common question hai. Honest comparison:
+
+### GitHub Copilot
+
+- ✅ Achi autocomplete
+- ❌ Sirf code suggestions, full edits nahi
+- ❌ Codebase ko nahi samajhta
+- 💰 $10/month (students free)
+
+### ChatGPT
+
+- ✅ General purpose AI
+- ❌ Browser mein alag tab — copy/paste karna padta hai
+- ❌ Tumhare code ko nahi dekhta directly
+- 💰 Free version available
+
+### Cursor AI
+
+- ✅ Full code editor + AI integration
+- ✅ **Pure codebase ko samajhta hai**
+- ✅ Multiple files ek saath edit kar sakta hai
+- ✅ Free tier mein bhi powerful
+- 💰 Free + Pro ($20/month)
+
+**Verdict**: Agar tum developer ho — Cursor sabse efficient hai. Copilot aur ChatGPT alag alag tools hain. Cursor unko combine karke aur improve karta hai.
+
+## Step 1: Cursor Install Karo
+
+### Download Karo
+
+[cursor.com](https://cursor.com) pe jao aur apne OS ke liye download karo:
+
+- **Windows**: `.exe` file
+- **macOS**: `.dmg` file
+- **Linux**: `.AppImage` file
+
+Installation **2-3 minute** ka kaam hai. VS Code jaise hi install hota hai.
+
+### Pehli Baar Open Karo
+
+Cursor open karne pe ye options aate hain:
+
+1. **Import VS Code Settings** — agar tum VS Code use karte ho, click karo. Sab extensions, themes, keybindings transfer ho jayenge.
+2. **Sign Up** — email se account banao (Google sign-in fastest hai)
+3. **Choose AI Model** — default rehne do (GPT-4 + Claude mix automatically use hota hai)
+
+## Step 2: Apna Pehla AI Edit Karo
+
+Cursor open hone ke baad **koi bhi project folder open karo**. Phir ye 3 cheezein try karo:
+
+### Feature 1: Tab Autocomplete
+
+Bas type karna shuru karo. Cursor **agle 5-10 lines predict** karta hai grey text mein.
+
+```javascript
+// Type karo:
+function calculateAverage
+
+// Cursor automatically suggest karega:
+function calculateAverage(numbers) {
+  if (numbers.length === 0) return 0;
+  const sum = numbers.reduce((a, b) => a + b, 0);
+  return sum / numbers.length;
+}
+```
+
+**Tab press karo** to accept. **Esc** to reject.
+
+Ye Copilot se behtar hai kyunki Cursor **tumhare poore project ko dekh kar** suggest karta hai — variable names, coding style, sab match karta hai.
+
+### Feature 2: Cmd+K (Inline Edit) — Game Changer
+
+Ye Cursor ka **sabse powerful feature** hai.
+
+**Use case**: Code likha hua hai, modify karna hai.
+
+1. Code select karo
+2. `Cmd+K` (Mac) ya `Ctrl+K` (Windows) press karo
+3. Plain English mein instruction do
+4. Cursor code modify kar deta hai
+
+**Example**:
+
+Tumhara existing code:
+
+```javascript
+function getUsers() {
+  fetch('/api/users')
+    .then(res => res.json())
+    .then(data => console.log(data));
+}
+```
+
+Select karo, `Cmd+K` press karo, likho: **"convert to async/await with error handling"**
+
+Cursor ye dega:
+
+```javascript
+async function getUsers() {
+  try {
+    const res = await fetch('/api/users');
+    const data = await res.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error('Failed to fetch users:', error);
+    throw error;
+  }
+}
+```
+
+**Accept** karo ya **Reject**. Done.
+
+### Feature 3: Cmd+L (AI Chat) — Side Panel
+
+`Cmd+L` (Mac) ya `Ctrl+L` (Windows) — right side mein **AI chat** kholta hai.
+
+Ye ChatGPT jaisa hai, lekin **tumhare code ke saath integrated**:
+
+- Code select karo phir chat mein bhejo — Cursor automatically context samjhta hai
+- Files mention karo `@filename.js` likh ke
+- Folders mention karo `@folder/`
+- Documentation search karo `@docs`
+
+**Example questions** jo tum chat mein puch sakte ho:
+
+```
+- Ye function kya kar raha hai? Roman Urdu mein samjhao
+- Is component mein performance issue hai? Optimize kaise karu?
+- Mere project mein kahan kahan API calls ho rahi hain?
+- Is bug ko fix karne ka best way kya hai?
+```
+
+### Feature 4: Composer — Multiple Files Edit
+
+`Cmd+I` (Mac) ya `Ctrl+I` (Windows) — Composer kholta hai.
+
+Ye **Cursor ka super power** hai. Multiple files ek saath edit kar sakte ho.
+
+**Example**: Tumhe ek nayi feature add karni hai — login system.
+
+Composer mein likho:
+
+```
+Create a login system with:
+- /app/login/page.js (login form)
+- /app/api/auth/route.js (API endpoint)
+- /lib/auth.js (helper functions)
+- Update /components/Header.jsx (show login button)
+```
+
+Cursor **chaaron files create/edit** kar dega. Tum review karke accept ya reject kar sakte ho **file-by-file**.
+
+### Feature 5: @ Mentions — Context Master
+
+Chat mein `@` likho aur dekho options:
+
+- `@filename` — kisi specific file ko context mein lao
+- `@folder/` — pura folder include karo
+- `@codebase` — pura project search karo
+- `@docs` — official docs (React, Next.js, etc.) include karo
+- `@web` — internet search karo
+- `@git` — recent commits dekho
+
+**Real example**:
+
+```
+@components/Header.jsx me dark mode toggle add karo.
+Existing theme provider use karna jo @lib/theme.js me hai.
+```
+
+Cursor dono files dekh kar **perfect implementation** dega.
+
+## Free vs Pro — Kya Lena Chahiye?
+
+### Cursor Free Tier
+
+- ✅ 2000 completions/month
+- ✅ 50 slow GPT-4 requests
+- ✅ 200 cursor-small (fast) requests
+- ✅ All features unlocked
+
+### Cursor Pro ($20/month)
+
+- ✅ Unlimited completions
+- ✅ 500 fast GPT-4 requests
+- ✅ Unlimited slow requests
+- ✅ Priority access to new features
+
+### Pakistani Developers Ke Liye Honest Advice:
+
+**Agar student ho ya freelancing start kar rahe ho**: **Free tier kafi hai**. Smart usage ke saath 80% kaam free mein ho jata hai.
+
+**Agar full-time developer ho aur Cursor daily use karte ho**: Pro worth hai. $20 mein **15-20 ghante** save hote hain — har developer ke liye no-brainer.
+
+**Payment problem**: Pakistan se direct payment mushkil hai. Solutions:
+
+1. **Wise virtual card** — most reliable
+2. **Payoneer card**
+3. **HBL DigiCard** ($300 monthly limit)
+
+## Free Tier Maximum Use Karne Ke Tips
+
+Free tier mein bhi maximum value nikalne ke 5 tricks:
+
+### 1. Cursor-small Use Karo Simple Tasks Ke Liye
+
+Default `gpt-4` use hota hai (slow request count hota hai). Settings → Models → **default change karo `cursor-small` pe** — fast requests use hote hain (200/month).
+
+Sirf complex tasks ke liye GPT-4 use karo manually.
+
+### 2. Tab Completions Save Karo
+
+Tab completion limit (2000/month) ko bachao — sirf complex logic ke liye use karo. Simple syntax khud likho.
+
+### 3. Local Models Bhi Add Karo
+
+Settings mein **Ollama** add kar sakte ho — local models run karte hain, **unlimited free**. Setup thoda technical hai but worth it.
+
+### 4. Selection-based Edits Karo
+
+Pura file na bhejo — sirf relevant code select karke `Cmd+K` use karo. Kam tokens, faster response.
+
+### 5. Templates Save Karo
+
+Common prompts save karke rakho. Example:
+- "Add JSDoc comments"
+- "Convert to TypeScript"
+- "Add error handling"
+- "Optimize for performance"
+
+## Pakistani Developers Ke Liye Special Tips
+
+### Tip 1: Roman Urdu Mein Prompts Kaam Karte Hain
+
+Cursor ko Roman Urdu samjh aati hai:
+
+```
+Ye function ko optimize karo aur Roman Urdu mein comments add karo
+```
+
+Try karke dekho — surprisingly accha kaam karta hai.
+
+### Tip 2: Internet Speed Matter Karti Hai
+
+Cursor cloud-based hai. Slow internet pe completions slow aati hain. **Wired connection** ya **5G** use karo agar possible ho.
+
+### Tip 3: VPN Issues
+
+Kuch ISPs pe Cursor slow hota hai. Agar issues aayein:
+
+- **Cloudflare WARP** try karo (free)
+- **1.1.1.1 DNS** use karo
+
+### Tip 4: Project Indexing
+
+Bara project open karne ke baad **Settings → Codebase Indexing → Re-index** karo. Cursor pura codebase samjh leta hai — phir `@codebase` queries 10x behtar kaam karti hain.
+
+## Keyboard Shortcuts Cheat Sheet
+
+Ye shortcuts yaad kar lo — coding 3x fast ho jayegi:
+
+| Shortcut (Mac) | Shortcut (Win) | Action |
+|----------------|----------------|--------|
+| `Cmd+K` | `Ctrl+K` | Inline edit selected code |
+| `Cmd+L` | `Ctrl+L` | Open AI chat |
+| `Cmd+I` | `Ctrl+I` | Open Composer (multi-file) |
+| `Tab` | `Tab` | Accept completion |
+| `Esc` | `Esc` | Reject completion |
+| `Cmd+Shift+L` | `Ctrl+Shift+L` | Chat with selection |
+| `Cmd+Enter` | `Ctrl+Enter` | Submit chat with @codebase |
+| `Cmd+/` | `Ctrl+/` | Toggle AI on/off |
+
+## Common Mistakes — Bachna Hai!
+
+### ❌ Mistake 1: Sab Kuch AI Pe Chhorna
+
+AI tool hai, replacement nahi. **Code ko samjho** jo AI generate karta hai. Blindly accept karne se bugs aate hain aur tum kuch nahi seekhte.
+
+### ❌ Mistake 2: Vague Prompts
+
+Bad prompt: "Fix this code"
+
+Good prompt: "Fix the null check on line 23, the user object can be undefined when API fails"
+
+Specific prompts = better results.
+
+### ❌ Mistake 3: Free Limit Burn Karna
+
+Tab completions 2000/month hain. Agar daily 200 use karoge — 10 din mein khatam. Smart use karo.
+
+### ❌ Mistake 4: Sensitive Data Bhejna
+
+API keys, passwords, client data — Cursor ko mat bhejo. Settings mein **"Privacy Mode"** enable karo agar sensitive code pe kaam karte ho.
+
+## Should You Switch from VS Code?
+
+Honest answer: **Haan**.
+
+VS Code ka 95% kuch Cursor mein hai (because Cursor VS Code ka fork hai). Plus AI features bonus mein. Tumhari sab extensions, settings, themes — sab kaam karenge.
+
+Only downside: Cursor ka **download size thoda bara** hai (300MB+ vs VS Code 80MB). But ye worth it hai.
+
+## Conclusion
+
+Cursor AI 2026 mein **must-have tool** hai har serious developer ke liye. Free tier mein bhi itna powerful hai ke tumhari productivity easily 2-3x ho jayegi.
+
+**Key takeaways**:
+
+1. ✅ Cursor download karo aaj hi — [cursor.com](https://cursor.com)
+2. ✅ VS Code settings import karo
+3. ✅ 5 main shortcuts yaad karo (Cmd+K, Cmd+L, Cmd+I sabse important)
+4. ✅ Free tier se start karo — 1 month use karke decide karo Pro lena hai ya nahi
+5. ✅ Roman Urdu prompts try karo
+
+Agar tum Pakistan se developer ho aur abhi tak Cursor try nahi kiya — **aaj hi karo**. Aik hafte mein tumhe samjh aa jayegi ke tum pehle kya miss kar rahe the.
+
+Comment mein batao — Cursor try karne ke baad tumhara experience kya raha? Konsa feature sabse zyada pasand aaya? 💬
+
+**Happy Coding!** 🚀
