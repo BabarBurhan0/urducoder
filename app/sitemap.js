@@ -1,4 +1,5 @@
 import { getAllPosts } from "@/lib/posts";
+import { categories } from "@/lib/categories";
 import { siteConfig } from "@/lib/site";
 
 export default function sitemap() {
@@ -19,6 +20,13 @@ export default function sitemap() {
     priority: route.priority,
   }));
 
+  const categoryRoutes = categories.map((c) => ({
+    url: `${siteConfig.url}/blog/category/${c.slug}`,
+    lastModified: now,
+    changeFrequency: "weekly",
+    priority: 0.7,
+  }));
+
   const postRoutes = getAllPosts().map((post) => ({
     url: `${siteConfig.url}/blog/${post.slug}`,
     lastModified: new Date(post.frontmatter.date),
@@ -26,5 +34,5 @@ export default function sitemap() {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...postRoutes];
+  return [...staticRoutes, ...categoryRoutes, ...postRoutes];
 }

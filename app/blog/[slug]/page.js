@@ -183,6 +183,18 @@ export default async function PostPage({ params }) {
           </div>
         </header>
 
+        {/* Hero Image (auto-generated OG image as cover) */}
+        <div className="mx-auto -mt-10 max-w-4xl px-4 sm:px-6 lg:px-8">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`/blog/${slug}/opengraph-image`}
+            alt={frontmatter.title}
+            width={1200}
+            height={630}
+            className="aspect-[1200/630] w-full rounded-2xl border border-gray-200 object-cover shadow-2xl dark:border-gray-800"
+          />
+        </div>
+
         {/* Content */}
         <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
           {/* Ad: Top of article */}

@@ -1,9 +1,12 @@
 import Link from "next/link";
-import { getFeaturedPosts } from "@/lib/posts";
+import { getFeaturedPosts, getSectionsWithPosts } from "@/lib/posts";
+import { categories } from "@/lib/categories";
 import PostCard from "@/components/PostCard";
 
 export default function HomePage() {
   const featuredPosts = getFeaturedPosts(3);
+  const sectionsWithPosts = getSectionsWithPosts();
+  const sectionMap = new Map(sectionsWithPosts.map((s) => [s.slug, s]));
 
   return (
     <>
@@ -22,7 +25,7 @@ export default function HomePage() {
               Mein
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600 sm:text-xl dark:text-gray-400">
-              AI tools, Web Development, JavaScript, aur modern tech tutorials —
+              AI tools, Web Development, Freelancing aur Career tutorials —
               sab kuch <strong className="text-gray-900 dark:text-white">Roman Urdu</strong> mein.
               Bilkul beginner se le kar advanced level tak.
             </p>
@@ -47,71 +50,49 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Features / Categories Section */}
+      {/* Sections Showcase */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-            Kya Seekhoge Yahan?
+            5 Sections — Har Topic Ke Liye
           </h2>
           <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
-            Modern tech ki har field — Roman Urdu mein, asaan tarike se.
+            Modern tech ki har field — apni interest ka section choose karo.
           </p>
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            {
-              icon: "🤖",
-              title: "AI Tools & ChatGPT",
-              description: "ChatGPT, Claude, Gemini aur 50+ AI tools ka istemal seekhein.",
-              color: "from-purple-500 to-pink-500",
-            },
-            {
-              icon: "⚛️",
-              title: "Web Development",
-              description: "React, Next.js, Tailwind CSS — modern web banana seekhein.",
-              color: "from-blue-500 to-cyan-500",
-            },
-            {
-              icon: "📱",
-              title: "JavaScript Mastery",
-              description: "Zero se advanced tak — JavaScript ka complete journey.",
-              color: "from-yellow-500 to-orange-500",
-            },
-            {
-              icon: "🚀",
-              title: "Career Tips",
-              description: "Freelancing, jobs, aur Pakistani developer ke liye guidance.",
-              color: "from-green-500 to-emerald-500",
-            },
-            {
-              icon: "💻",
-              title: "Coding Tutorials",
-              description: "Step-by-step projects jo aap ke portfolio mein add ho jayein.",
-              color: "from-red-500 to-rose-500",
-            },
-            {
-              icon: "🛠️",
-              title: "Dev Tools & Tips",
-              description: "VS Code, Git, GitHub, Vercel — productivity tools.",
-              color: "from-indigo-500 to-purple-500",
-            },
-          ].map((feature) => (
-            <div
-              key={feature.title}
-              className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-lg hover:border-indigo-300 dark:border-gray-800 dark:bg-gray-900 dark:hover:border-indigo-700 transition-all"
-            >
-              <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br ${feature.color} text-2xl shadow-md`}>
-                {feature.icon}
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                {feature.title}
-              </h3>
-              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                {feature.description}
-              </p>
-            </div>
-          ))}
+          {categories.map((section) => {
+            const data = sectionMap.get(section.slug);
+            const count = data ? data.posts.length : 0;
+            return (
+              <Link
+                key={section.slug}
+                href={`/blog/category/${section.slug}`}
+                className={`group relative overflow-hidden rounded-xl border ${section.border} ${section.bg} p-6 shadow-sm hover:shadow-lg transition-all`}
+              >
+                <div className="flex items-start justify-between">
+                  <div
+                    className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br ${section.gradient} text-2xl shadow-md`}
+                  >
+                    {section.icon}
+                  </div>
+                  <span className={`rounded-full ${section.accent} ${section.text} px-3 py-1 text-xs font-semibold`}>
+                    {count} {count === 1 ? "Post" : "Posts"}
+                  </span>
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  {section.name}
+                </h3>
+                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                  {section.description}
+                </p>
+                <p className={`mt-3 text-sm font-semibold ${section.text} group-hover:underline`}>
+                  Explore &rarr;
+                </p>
+              </Link>
+            );
+          })}
         </div>
       </section>
 
@@ -151,7 +132,7 @@ export default function HomePage() {
             Apna Coding Safar Aaj Shuru Karein
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-indigo-100">
-            Hamare blog par 100+ tutorials available hain — bilkul free, hamesha ke liye.
+            Hamare blog par 50+ tutorials available hain — bilkul free, hamesha ke liye.
           </p>
           <Link
             href="/blog"

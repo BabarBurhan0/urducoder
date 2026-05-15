@@ -113,6 +113,94 @@ const mdxComponents = {
   strong: (props) => (
     <strong className="font-semibold text-gray-900 dark:text-white" {...props} />
   ),
+  ToolCard: ({ icon = "🔧", name, tagline, price, link, badge, gradient = "from-indigo-500 to-purple-500" }) => (
+    <div className="my-6 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
+      <div className={`h-2 bg-gradient-to-r ${gradient}`} />
+      <div className="p-6">
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex items-start gap-4">
+            <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${gradient} text-3xl shadow-md`}>
+              {icon}
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                {name}
+              </h3>
+              {tagline && (
+                <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{tagline}</p>
+              )}
+            </div>
+          </div>
+          {badge && (
+            <span className="shrink-0 rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-700 dark:bg-amber-900/40 dark:text-amber-300">
+              {badge}
+            </span>
+          )}
+        </div>
+        <div className="mt-4 flex flex-wrap items-center gap-3 text-sm">
+          {price && (
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3 py-1 font-semibold text-green-700 dark:bg-green-900/40 dark:text-green-300">
+              💰 {price}
+            </span>
+          )}
+          {link && (
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-full bg-indigo-600 px-4 py-1 font-semibold text-white hover:bg-indigo-700"
+            >
+              Visit Site →
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  ),
+  ProTip: ({ children, title = "💡 Pro Tip" }) => (
+    <div className="my-6 rounded-xl border-l-4 border-amber-500 bg-amber-50 p-5 dark:bg-amber-950/30">
+      <p className="mb-1 font-bold text-amber-900 dark:text-amber-200">{title}</p>
+      <div className="text-amber-900 dark:text-amber-100 [&>p]:my-2 [&>p:first-child]:mt-0 [&>p:last-child]:mb-0">
+        {children}
+      </div>
+    </div>
+  ),
+  Callout: ({ children, type = "info", title }) => {
+    const styles = {
+      info: { border: "border-blue-500", bg: "bg-blue-50 dark:bg-blue-950/30", text: "text-blue-900 dark:text-blue-100", titleColor: "text-blue-900 dark:text-blue-200", icon: "ℹ️" },
+      success: { border: "border-green-500", bg: "bg-green-50 dark:bg-green-950/30", text: "text-green-900 dark:text-green-100", titleColor: "text-green-900 dark:text-green-200", icon: "✅" },
+      warning: { border: "border-orange-500", bg: "bg-orange-50 dark:bg-orange-950/30", text: "text-orange-900 dark:text-orange-100", titleColor: "text-orange-900 dark:text-orange-200", icon: "⚠️" },
+      danger: { border: "border-red-500", bg: "bg-red-50 dark:bg-red-950/30", text: "text-red-900 dark:text-red-100", titleColor: "text-red-900 dark:text-red-200", icon: "🚫" },
+    };
+    const s = styles[type] || styles.info;
+    return (
+      <div className={`my-6 rounded-xl border-l-4 ${s.border} ${s.bg} p-5`}>
+        {title && (
+          <p className={`mb-1 font-bold ${s.titleColor}`}>
+            {s.icon} {title}
+          </p>
+        )}
+        <div className={`${s.text} [&>p]:my-2 [&>p:first-child]:mt-0 [&>p:last-child]:mb-0`}>
+          {children}
+        </div>
+      </div>
+    );
+  },
+  Stat: ({ value, label, color = "indigo" }) => {
+    const colors = {
+      indigo: "from-indigo-500 to-purple-500",
+      green: "from-green-500 to-emerald-500",
+      orange: "from-orange-500 to-red-500",
+      blue: "from-blue-500 to-cyan-500",
+      pink: "from-pink-500 to-rose-500",
+    };
+    return (
+      <div className={`my-6 inline-flex flex-col items-center rounded-2xl bg-gradient-to-br ${colors[color] || colors.indigo} px-8 py-6 text-white shadow-lg`}>
+        <div className="text-4xl font-extrabold">{value}</div>
+        <div className="mt-1 text-sm font-medium opacity-90">{label}</div>
+      </div>
+    );
+  },
 };
 
 const prettyCodeOptions = {
