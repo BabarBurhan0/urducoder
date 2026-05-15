@@ -13,8 +13,9 @@ export function generateStaticParams() {
   return getAllCategorySlugs().map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }) {
-  const section = getCategoryBySlug(params.slug);
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const section = getCategoryBySlug(slug);
   if (!section) return {};
 
   const title = `${section.name} — UrduCoder`;
@@ -39,8 +40,9 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function CategoryPage({ params }) {
-  const section = getCategoryBySlug(params.slug);
+export default async function CategoryPage({ params }) {
+  const { slug } = await params;
+  const section = getCategoryBySlug(slug);
   if (!section) notFound();
 
   const posts = getPostsBySection(section.slug);
